@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
-import { THEMES } from "../constants";
+import { THEMES } from "../constants.ts";
 
 export const generateLevelContent = async (level: number) => {
   // Always use the process.env.API_KEY directly when initializing

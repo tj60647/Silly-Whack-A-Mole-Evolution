@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { GameState, LevelData } from './types';
-import { INITIAL_DIFFICULTY, GRID_SIZE } from './constants';
-import { generateLevelContent } from './services/geminiService';
-import GameBoard from './components/GameBoard';
+import { GameState, LevelData } from './types.ts';
+import { INITIAL_DIFFICULTY, GRID_SIZE } from './constants.ts';
+import { generateLevelContent } from './services/geminiService.ts';
+import GameBoard from './components/GameBoard.tsx';
 
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>(GameState.START);
@@ -111,13 +111,15 @@ const App: React.FC = () => {
       gameLoopRef.current = setInterval(spawnMole, currentLevelData.difficulty.spawnInterval);
     } else {
       if (gameLoopRef.current) clearInterval(gameLoopRef.current);
-      Object.values(moleStayTimers.current).forEach(t => clearTimeout(t));
+      // Fix: Cast t to any to resolve unknown to number assignment error for clearTimeout
+      Object.values(moleStayTimers.current).forEach(t => clearTimeout(t as any));
       moleStayTimers.current = {};
     }
 
     return () => {
       if (gameLoopRef.current) clearInterval(gameLoopRef.current);
-      Object.values(moleStayTimers.current).forEach(t => clearTimeout(t));
+      // Fix: Cast t to any to resolve unknown to number assignment error for clearTimeout
+      Object.values(moleStayTimers.current).forEach(t => clearTimeout(t as any));
     };
   }, [gameState, currentLevelData, hitMoles]);
 

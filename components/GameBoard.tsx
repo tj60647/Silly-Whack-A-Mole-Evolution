@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Mole from './Mole';
+import Mole from './Mole.tsx';
 
 interface GameBoardProps {
   activeIndices: number[];
