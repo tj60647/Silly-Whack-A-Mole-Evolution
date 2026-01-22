@@ -1,0 +1,5 @@
+{
+  "name": "Silly Whack-A-Mole Evolution",
+  "description": "An AI-powered Whack-A-Mole game where levels evolve in complexity and aesthetic silliness using Gemini-generated characters and quirky themes.",
+  "requestFramePermissions": []
+}
